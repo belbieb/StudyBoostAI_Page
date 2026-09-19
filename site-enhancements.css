@@ -1,0 +1,282 @@
+/* StudyBoost AI layout enhancements
+   This small layer keeps the visual system shared while making the
+   responsive grid and interaction patterns easy to find and maintain. */
+
+/* ID selector: the quote form gets a clear, consistent panel treatment. */
+#share-quote {
+  border-top: 4px solid var(--coral);
+}
+
+/* Class selectors: reusable grid and content patterns across every page. */
+.hero,
+.mission-grid,
+.feature-grid,
+.quote-layout {
+  display: grid;
+  align-items: stretch;
+}
+
+.hero > *,
+.mission-grid > *,
+.feature-grid > *,
+.quote-layout > * {
+  min-width: 0;
+}
+
+/* Attribute selector: every primary action receives the same focus language. */
+a[class~="button"],
+button[type="submit"] {
+  min-height: 44px;
+}
+
+a[class~="button"]:focus-visible,
+button[type="submit"]:focus-visible,
+.nav-links a:focus-visible,
+.menu-toggle:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+
+/* Attribute selector for the open mobile navigation state. */
+.menu-toggle[aria-expanded="true"] {
+  background: var(--mint);
+  border-radius: 10px;
+}
+
+/* Pseudo-classes keep links and cards responsive without JavaScript. */
+.feature-card:hover,
+.quote-card:hover,
+.form-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-4px);
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  box-shadow: var(--shadow);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(18, 107, 104, .12);
+}
+
+@media (max-width: 850px) {
+  /* Tablet: the hero becomes a single flexible Grid column. */
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  /* Mobile: one-column Grid prevents horizontal overflow. */
+  .feature-grid,
+  .quote-layout,
+  .mission-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero {
+    gap: 2rem;
+  }
+}
+
+/* Final polish: one type scale, spacing rhythm, and surface language. */
+body {
+  background:
+    linear-gradient(rgba(34, 211, 238, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, .035) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(124, 92, 255, .26), transparent 28%),
+    radial-gradient(circle at 90% 0%, rgba(34, 211, 238, .18), transparent 24%),
+    var(--cream);
+  background-size: 42px 42px, 42px 42px, auto, auto, auto;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.site-header,
+.feature-card,
+.quote-card,
+.form-card,
+.dashboard-card,
+.note {
+  background-color: var(--paper);
+  border-radius: 20px;
+}
+
+.site-header {
+  border-color: rgba(80, 103, 163, .45);
+}
+
+.brand-mark {
+  background: linear-gradient(135deg, #7C5CFF, var(--teal));
+}
+
+.nav-cta {
+  background: var(--paper);
+  border-color: var(--line);
+}
+
+.hero-art {
+  background: linear-gradient(145deg, #211B4A, #0C3545);
+  box-shadow: var(--shadow);
+}
+
+.glow-orb {
+  background: rgba(244, 114, 182, .45);
+}
+
+.dashboard-card,
+.note,
+.feature-card,
+.quote-card,
+.form-card {
+  border-color: rgba(80, 103, 163, .45);
+  box-shadow: var(--shadow);
+}
+
+.feature-card .demo {
+  background: var(--mint);
+  color: var(--teal);
+}
+
+.home-band {
+  background: linear-gradient(135deg, #211B4A, #0C6277);
+}
+
+.button.light {
+  background: var(--paper);
+}
+
+input,
+textarea {
+  background: #20345A;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+.button,
+.nav-cta,
+.text-link,
+.nav-links a {
+  transition: color .3s ease, background-color .3s ease, border-color .3s ease,
+    box-shadow .3s ease, transform .3s ease;
+}
+
+.button.primary:hover,
+.button.primary:focus-visible {
+  background: var(--coral);
+  box-shadow: 0 10px 24px rgba(241, 132, 111, .25);
+}
+
+.button.light:hover,
+.button.light:focus-visible,
+.nav-cta:hover,
+.nav-cta:focus-visible {
+  background: var(--mint);
+  border-color: var(--teal);
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--coral);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.nav-links a:not(.nav-cta):hover,
+.nav-links a:not(.nav-cta):focus-visible {
+  color: var(--coral);
+}
+
+input,
+textarea {
+  transition: border-color .25s ease, box-shadow .25s ease, background-color .25s ease;
+}
+
+input:hover,
+textarea:hover {
+  border-color: var(--teal);
+  background-color: #fff;
+}
+
+.quote-section {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.quote-intro {
+  max-width: 650px;
+}
+
+.quote-intro h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 .75rem;
+}
+
+.quote-intro .eyebrow {
+  margin-bottom: .85rem;
+}
+
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.quote-card .train-button {
+  margin-top: 1.25rem;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  padding: .6rem 1rem;
+  background: var(--mint);
+  color: var(--teal);
+  cursor: pointer;
+  font: 600 .78rem var(--sans);
+  transition: background-color .3s ease, color .3s ease, transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.quote-card .train-button:hover,
+.quote-card .train-button:focus-visible {
+  background: var(--teal);
+  color: var(--paper);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 18px rgba(34, 211, 238, .2);
+}
+
+.quote-card .train-button:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.feature-card,
+.quote-card,
+.form-card {
+  transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+}
